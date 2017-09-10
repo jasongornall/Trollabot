@@ -27,6 +27,9 @@ exports.trollabot = functions.https.onRequest((function(_this) {
   return function(main_request, main_response) {
     var calculateUserScore, credentials, formatScore, gradbRawData, rTime, redditFunny, secondsToData;
     credentials = auth(main_request);
+    if (!credentials || credentials.name !== functions.config().auth.name || credentials.pass !== functions.config().auth.pass) {
+      return response.send('hack attempt');
+    }
     rTime = function(callback, logMsg) {
       if (logMsg == null) {
         logMsg = '';
