@@ -16,7 +16,7 @@ reddit.setupOAuth2 functions.config().reddit.oauth_key, functions.config().reddi
 exports.trollabot = functions.https.onRequest (main_request, main_response) =>
   credentials = auth(main_request);
   if not credentials or credentials.name isnt functions.config().auth.name or credentials.pass isnt functions.config().auth.pass
-    return response.send('hack attempt')
+    return main_response.send('hack attempt')
 
   rTime = (callback, logMsg = '') ->
     console.log logMsg if logMsg
